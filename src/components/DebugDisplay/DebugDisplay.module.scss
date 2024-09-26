@@ -1,0 +1,28 @@
+// DebugDisplay.module.scss
+.debugWrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+
+.row {
+  display: contents;
+}
+
+.cell {
+  width: 30px;  // Уменьшение размера ячеек
+  height: 30px;
+  background-color: #ccc;  // Цвет фона по умолчанию
+  border: 1px solid #333;
+}
+
+.active {
+  background-color: gold;  // Цвет активной ячейки
+}

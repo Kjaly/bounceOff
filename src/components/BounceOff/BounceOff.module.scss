@@ -1,0 +1,152 @@
+@import '@/styles/variables';  // Импортируем переменные
+
+.gameWrapper {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 60px;  // Увеличиваем отступ между игровым полем и контейнерами с фигурами
+  color: $text-color;  // Цвет текста
+  height: 100%;  // Контейнер занимает всю высоту
+  margin: 0 auto;  // Центрируем игру по горизонтали
+  padding: 20px;  // Отступы от краёв контейнера
+  box-sizing: border-box;
+}
+
+.grid {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);  // Сетки по рядам (6 строк)
+  grid-template-columns: repeat(6, 1fr);  // Сетки по колонкам (6 колонок)
+  gap: 10px;  // Отступы между клетками
+  width: 100%;  // Поле занимает всю доступную ширину
+  max-width: 90vw;  // Ограничение ширины поля в зависимости от экрана
+  max-height: 90vh;  // Ограничение высоты поля в зависимости от экрана
+  min-width: 400px;  // Минимальная ширина поля
+  min-height: 400px;  // Минимальная высота поля
+  aspect-ratio: 1 / 1;  // Поле всегда остается квадратным
+}
+
+.row {
+  display: contents;
+}
+
+.cell {
+  width: 100%;
+  height: 100%;
+  background-color: $cell-background-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid $cell-border-color;
+  border-radius: 50%;
+  position: relative;
+  cursor: pointer;
+
+  .ball {
+    width: 80%;  // Шарик занимает 80% клетки
+    height: 80%;
+    background-color: transparent;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  }
+
+  &.player-1 .ball {
+    background-color: lightblue;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  &.player-2 .ball {
+    background-color: lightcoral;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.patterns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  // Центрируем карточки по горизонтали
+  justify-content: flex-start;  // Не растягиваем карточки по вертикали
+  gap: 20px;  // Отступы между элементами
+}
+
+.patternWrapper {
+  width: 240px;  // Увеличенная ширина карточки с фигурой
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;  // Высота адаптируется по содержимому
+}
+
+.playerName {
+  margin-bottom: 10px;  // Отступ между именем игрока и карточкой
+  text-align: center;  // Центрируем текст имени
+}
+
+.winningCell {
+  border: 3px solid gold;
+  box-sizing: border-box;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $background-color;
+  color: $text-color;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.modalButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: $highlight-color;
+  color: $text-color;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($highlight-color, 10%);
+  }
+}
+
+.debugGrid {
+  margin-top: 20px;
+}
+
+.debugTable {
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+
+.debugRow {
+  display: contents;
+}
+
+.debugCell {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $border-color;
+  background-color: $cell-background-color;
+}
+
+.success {
+  background-color: lightgreen;
+}
+
+.failure {
+  background-color: lightcoral;
+}

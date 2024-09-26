@@ -1,0 +1,11 @@
+// global.scss
+
+@import '@/styles/variables';  // Импортируем переменные
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $background-color;  // Фон для всего приложения
+}
